@@ -1,3 +1,6 @@
 *.log
-build
-node-modules
+*.zip
+.DS_Store
+.DS_Store?
+build/
+node-modules/
