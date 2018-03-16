@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/fr33d-/udacityFrontenddevProject2#readme",
   "dependencies": {
+    "font-awesome": "^4.7.0",
     "gulp": "^3.9.1",
     "gulp-connect": "^5.5.0",
     "gulp-livereload": "^3.8.1",
