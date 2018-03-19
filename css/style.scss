@@ -1,3 +1,5 @@
+$cardSize: 180px;
+
 * {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color: #444a52;
@@ -6,29 +8,47 @@
 footer {
 	text-align: center;
 	width: 100%;
-	margin-top: 100px;
+	margin-top: 80px;
 }
 
 h1 {
 	font-size: 2.5em;
 	width: 100%;
 	text-align: center;
+	margin-bottom: 60px;
 }
 
 .progress {
 	clear: both;
+	width: 800px;
+	margin: 10px auto;
 
 	ul {
 		list-style: none;
-		margin: 5px auto;
+		padding: 25px 10px 0 0;
+		margin: 0;
+		width: 360px;
+		display: inline-block;
 	}
 
 	li {
 		height: 5px;
 		width: 40px;
-		background-color: #a7a7a7;
 		float: left;
 		margin: 2px;
+	}
+
+	.open {
+		background-color: #efefef;
+	}
+
+	.done {
+		background-color: #a7a7a7;
+	}
+
+	p {
+		display: inline-block;
+		margin: 5px 0;
 	}
 }
 
@@ -36,22 +56,37 @@ h1 {
 	height: 800px;
 	width: 800px;
 	border-radius: 20px;
-	background: linear-gradient(135deg, #1e4696 0%,#8fcdd6 100%);
 	margin: auto;
 	padding: 10px;
 
+	background: rgb(54,38,172);
+    background: linear-gradient(135deg, rgba(54,38,172,1) 0%, rgba(64,113,196,1) 67%, rgba(59,162,233,1) 100%);
+
 	display: grid;
-	grid-template-rows: 160px 160px 160px 160px;
-	grid-template-columns: 160px 160px 160px 160px;
+	grid-template-rows: $cardSize $cardSize $cardSize $cardSize;
+	grid-template-columns: $cardSize $cardSize $cardSize $cardSize;
 	grid-auto-flow: column;
-	grid-row-gap: 20px;
-	grid-column-gap: 20px;
+	grid-gap: 20px;
 }
 
 .card {
 	border-radius: 15px;
-	height: 160px;
-	width: 160px;
+	height: $cardSize;
+	width: $cardSize;
 	margin: 10px;
-	background-color: #52b152;
+
+	i {
+		margin: 65px;
+		font-size: 50px;
+		color: #fff;
+	}
+
+	&-closed{
+		background: #b0c0cb;
+	}
+
+	&-open {
+		// background: #5cbf6a;
+		background: #2b7fb5;
+	}
 }

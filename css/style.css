@@ -5,42 +5,61 @@
 footer {
   text-align: center;
   width: 100%;
-  margin-top: 100px; }
+  margin-top: 80px; }
 
 h1 {
   font-size: 2.5em;
   width: 100%;
-  text-align: center; }
+  text-align: center;
+  margin-bottom: 60px; }
 
 .progress {
-  clear: both; }
+  clear: both;
+  width: 800px;
+  margin: 10px auto; }
   .progress ul {
     list-style: none;
-    margin: 5px auto; }
+    padding: 25px 10px 0 0;
+    margin: 0;
+    width: 360px;
+    display: inline-block; }
   .progress li {
     height: 5px;
     width: 40px;
-    background-color: #a7a7a7;
     float: left;
     margin: 2px; }
+  .progress .open {
+    background-color: #efefef; }
+  .progress .done {
+    background-color: #a7a7a7; }
+  .progress p {
+    display: inline-block;
+    margin: 5px 0; }
 
 .game {
   height: 800px;
   width: 800px;
   border-radius: 20px;
-  background: linear-gradient(135deg, #1e4696 0%, #8fcdd6 100%);
   margin: auto;
   padding: 10px;
+  background: #3626ac;
+  background: linear-gradient(135deg, #3626ac 0%, #4071c4 67%, #3ba2e9 100%);
   display: grid;
-  grid-template-rows: 160px 160px 160px 160px;
-  grid-template-columns: 160px 160px 160px 160px;
+  grid-template-rows: 180px 180px 180px 180px;
+  grid-template-columns: 180px 180px 180px 180px;
   grid-auto-flow: column;
-  grid-row-gap: 20px;
-  grid-column-gap: 20px; }
+  grid-gap: 20px; }
 
 .card {
   border-radius: 15px;
-  height: 160px;
-  width: 160px;
-  margin: 10px;
-  background-color: #52b152; }
+  height: 180px;
+  width: 180px;
+  margin: 10px; }
+  .card i {
+    margin: 65px;
+    font-size: 50px;
+    color: #fff; }
+  .card-closed {
+    background: #b0c0cb; }
+  .card-open {
+    background: #2b7fb5; }

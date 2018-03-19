@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var connect = require("gulp-connect");
 var livereload = require('gulp-livereload');
+var prettier = require('gulp-prettier');
 
 gulp.task('connect', function () {
 	return connect.server({
@@ -32,6 +33,12 @@ gulp.task('watch', ['sass'], function() {
 	    gulp.src( file.path)
 	        .pipe(connect.reload() );
 	});
+});
+
+gulp.task('prettier', () => {
+    gulp.src(['./**/*.js', './**/*.scss'])
+    .pipe(prettier({useFlowParser: true}))
+    .pipe(gulp.dest('./dist'))
 });
 
 livereload({ start: true });
