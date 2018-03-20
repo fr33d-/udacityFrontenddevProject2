@@ -50,11 +50,22 @@ h1 {
   grid-auto-flow: column;
   grid-gap: 20px; }
 
+.field {
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 800px; }
+
 .card {
   border-radius: 15px;
   height: 180px;
   width: 180px;
-  margin: 10px; }
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: block;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: transform 1s; }
   .card i {
     margin: 65px;
     font-size: 50px;
@@ -63,3 +74,6 @@ h1 {
     background: #b0c0cb; }
   .card-open {
     background: #2b7fb5; }
+
+.closed {
+  transform: rotateY(180deg); }

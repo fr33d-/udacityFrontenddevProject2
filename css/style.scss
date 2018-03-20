@@ -69,11 +69,24 @@ h1 {
 	grid-gap: 20px;
 }
 
+.field {
+	position: relative;
+	transform-style: preserve-3d;
+	perspective: 800px;
+}
+
 .card {
 	border-radius: 15px;
 	height: $cardSize;
 	width: $cardSize;
-	margin: 10px;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	display: block;
+	backface-visibility: hidden;
+
+	transform-style: preserve-3d;
+  	transition: transform 1s;
 
 	i {
 		margin: 65px;
@@ -89,4 +102,8 @@ h1 {
 		// background: #5cbf6a;
 		background: #2b7fb5;
 	}
+}
+
+.closed {
+	transform: rotateY( 180deg );
 }
