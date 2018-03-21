@@ -83,8 +83,9 @@ h1 {
 	top: 10px;
 	left: 10px;
 	display: block;
-	backface-visibility: hidden;
+	animation: all 3s ease-in-out;
 
+	backface-visibility: hidden;
 	transform-style: preserve-3d;
   	transition: transform 1s;
 
@@ -99,7 +100,6 @@ h1 {
 	}
 
 	&-open {
-		// background: #5cbf6a;
 		background: #2b7fb5;
 	}
 }
@@ -107,3 +107,21 @@ h1 {
 .closed {
 	transform: rotateY( 180deg );
 }
+
+@keyframes foundIt {
+  from { background: #2b7fb5; }
+
+  to { background: #2e9282; }
+}
+
+.found {
+	.card-open {
+		animation: foundIt 1s ease-in-out;
+		background: #2e9282;
+	}
+}
+
+
+
+
+

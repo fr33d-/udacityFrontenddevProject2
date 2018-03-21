@@ -54,32 +54,33 @@ class Player {
 			$('#'+cardID).find('.card-open').toggleClass('closed');
 			$('#'+cardID).find('.card-closed').toggleClass('closed');
 			this.secondCard = cardID;
-			this.turn++;
-		} else {
 			this.turn = 1;
 
-			if (cards[this.firstCard] != cards[this.secondCard]) {
-				$('#'+this.firstCard).find('.card-open').toggleClass('closed');
-				$('#'+this.firstCard).find('.card-closed').toggleClass('closed');
-				$('#'+this.secondCard).find('.card-open').toggleClass('closed');
-				$('#'+this.secondCard).find('.card-closed').toggleClass('closed');
-			} else {
-				$('#'+this.firstCard).removeClass('unfound');
-				$('#'+this.secondCard).removeClass('unfound');
-
-				this.found++;
+			if (cards[this.firstCard] == cards[this.secondCard]) {
 				var list = '';
+				this.found++;
 
 				for (var i = this.found; i > 0; i-- ) {
 					list += '<li class="done"></li>';
 				}
-
 				for (var i = this.found; i < 8; i++ ) {
 					list += '<li class="open"></li>';
 				}
-
 				$('.progress ul').html(list);
+
+				$('#'+this.firstCard).removeClass('unfound').addClass('found');
+				$('#'+this.secondCard).removeClass('unfound').addClass('found');
+			} else {
+				var firstCard = this.firstCard;
+				var secondCard = this.secondCard;
+				setTimeout(function(){
+					$('#'+firstCard).find('.card-open').toggleClass('closed');
+					$('#'+firstCard).find('.card-closed').toggleClass('closed');
+					$('#'+secondCard).find('.card-open').toggleClass('closed');
+					$('#'+secondCard).find('.card-closed').toggleClass('closed');
+				}, 1000);
 			}
+
 		}
 	}
 }
