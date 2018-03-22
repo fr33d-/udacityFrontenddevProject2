@@ -1,127 +1,196 @@
-$cardSize: 180px;
+@mixin styling($cardSize) {
+	* {
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		color: #444a52;
+	}
 
-* {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	color: #444a52;
-}
+	footer {
+		text-align: center;
+		width: 100%;
+		margin-top: 80px;
+	}
 
-footer {
-	text-align: center;
-	width: 100%;
-	margin-top: 80px;
-}
+	h1 {
+		font-size: 2.5em;
+		width: 100%;
+		text-align: center;
+		margin-bottom: 50px;
+	}
 
-h1 {
-	font-size: 2.5em;
-	width: 100%;
-	text-align: center;
-	margin-bottom: 60px;
-}
+	button {
+		font-size: 16px;
+		border: 0;
+		float: right;
+		margin-top: 10px;
 
-.progress {
-	clear: both;
-	width: 800px;
-	margin: 10px auto;
+		&:hover {
+			color: #406bc2;
+		}
+	}
 
-	ul {
-		list-style: none;
-		padding: 25px 10px 0 0;
-		margin: 0;
-		width: 360px;
+	.timer {
+		float: right;
+		margin: 10px 20px 0 0 ;
+	}
+
+	.progress {
+		clear: both;
+		width: $cardSize*4.5;
+		height: 25px;
+		margin: 10px auto;
+		padding-bottom: 10px;
+
+		ul {
+			list-style: none;
+			padding: 0 10px 0 0;
+			margin: 0;
+			width: $cardSize*2;
+			display: inline-block;
+		}
+
+		li {
+			height: 5px;
+			width: $cardSize/5;
+			float: left;
+			margin: 2px;
+		}
+
+		.open {
+			background-color: #efefef;
+		}
+
+		.done {
+			background-color: #a7a7a7;
+		}
+
+		p {
+			display: inline-block;
+			margin: 5px 0;
+		}
+	}
+
+	.progress-indicator {
+		display: inline;
+	}
+
+	.stars {
+		width: 110px;
+		height: 25px;
+		font-size: 20px;
 		display: inline-block;
+		margin-left: 40px;
+
+		ul {
+			list-style: none;
+			display: inline-block;
+			padding: 0;
+		}
+
+		li {
+			padding: 0;
+			width: 25px;
+			height: 15px;
+		}
+
+		.active {
+			color: #fc0;
+		}
 	}
 
-	li {
-		height: 5px;
-		width: 40px;
-		float: left;
-		margin: 2px;
+	.game {
+		height: $cardSize*4.5;
+		width: $cardSize*4.5;
+		border-radius:  $cardSize/16;
+		border-radius: 20px;
+		margin: auto;
+		padding: 20px 0 0 20px;
+
+		background: rgb(54,38,172);
+	    background: linear-gradient(135deg, rgba(54,38,172,1) 0%, rgba(64,113,196,1) 67%, rgba(59,162,233,1) 100%);
+
+		display: grid;
+		grid-template-rows: $cardSize $cardSize $cardSize $cardSize;
+		grid-template-columns: $cardSize $cardSize $cardSize $cardSize;
+		grid-auto-flow: column;
+		grid-gap: $cardSize/8;
 	}
 
-	.open {
-		background-color: #efefef;
+	.field {
+		position: relative;
+		transform-style: preserve-3d;
+		perspective: 800px;
 	}
 
-	.done {
-		background-color: #a7a7a7;
+	.card {
+		border-radius: 15px;
+		height: $cardSize;
+		width: $cardSize;
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: block;
+		animation: all 3s ease-in-out;
+
+		backface-visibility: hidden;
+		transform-style: preserve-3d;
+	  	transition: transform 1s;
+
+		i {
+			margin: 65px;
+			font-size: 50px;
+			color: #fff;
+		}
+
+		&-closed{
+			background: #b0c0cb;
+		}
+
+		&-open {
+			background: #2b7fb5;
+		}
 	}
 
-	p {
-		display: inline-block;
-		margin: 5px 0;
-	}
-}
-
-.game {
-	height: 800px;
-	width: 800px;
-	border-radius: 20px;
-	margin: auto;
-	padding: 10px;
-
-	background: rgb(54,38,172);
-    background: linear-gradient(135deg, rgba(54,38,172,1) 0%, rgba(64,113,196,1) 67%, rgba(59,162,233,1) 100%);
-
-	display: grid;
-	grid-template-rows: $cardSize $cardSize $cardSize $cardSize;
-	grid-template-columns: $cardSize $cardSize $cardSize $cardSize;
-	grid-auto-flow: column;
-	grid-gap: 20px;
-}
-
-.field {
-	position: relative;
-	transform-style: preserve-3d;
-	perspective: 800px;
-}
-
-.card {
-	border-radius: 15px;
-	height: $cardSize;
-	width: $cardSize;
-	position: absolute;
-	top: 10px;
-	left: 10px;
-	display: block;
-	animation: all 3s ease-in-out;
-
-	backface-visibility: hidden;
-	transform-style: preserve-3d;
-  	transition: transform 1s;
-
-	i {
-		margin: 65px;
-		font-size: 50px;
-		color: #fff;
+	.closed {
+		transform: rotateY( 180deg );
 	}
 
-	&-closed{
-		background: #b0c0cb;
+	@keyframes foundIt {
+	  from { background: #2b7fb5; }
+
+	  to { background: #2e9282; }
 	}
 
-	&-open {
-		background: #2b7fb5;
-	}
-}
-
-.closed {
-	transform: rotateY( 180deg );
-}
-
-@keyframes foundIt {
-  from { background: #2b7fb5; }
-
-  to { background: #2e9282; }
-}
-
-.found {
-	.card-open {
-		animation: foundIt 1s ease-in-out;
-		background: #2e9282;
+	.found {
+		.card-open {
+			animation: foundIt 1s ease-in-out;
+			background: #2e9282;
+		}
 	}
 }
 
+@media screen and (max-width: 840px) {
+    @include styling($cardSize: 90px);
 
+    .progress-indicator {
+    	display: none;
+    }
 
+    .stars {
+		margin-left: 0;
+	}
+
+	.card i {
+		margin: 30px;
+		font-size: 30px;
+	}
+
+	.game {
+		padding: 10px 0 0 10px;
+	}
+}
+
+@media screen and (min-width: 841px) {
+    @include styling($cardSize: 180px);
+}
 
 

@@ -15,17 +15,32 @@
 	<section>
 		<h1>Memory game</h1>
 		<section class="progress">
-			<ul>
-				<li class="open"></li>
-				<li class="open"></li>
-				<li class="open"></li>
-				<li class="open"></li>
-				<li class="open"></li>
-				<li class="open"></li>
-				<li class="open"></li>
-				<li class="open"></li>
-			</ul>
-			<p> found 🤓</p>
+			<div class="progress-indicator">
+				<ul>
+					<li class="open"></li>
+					<li class="open"></li>
+					<li class="open"></li>
+					<li class="open"></li>
+					<li class="open"></li>
+					<li class="open"></li>
+					<li class="open"></li>
+					<li class="open"></li>
+				</ul>
+				<p> found 🤓</p>
+			</div>
+
+			<div class="stars">
+				<ul>
+					<li><i class="fas fa-star active" id="star-1"></i></li>
+					<li><i class="fas fa-star active" id="star-2"></i></li>
+					<li><i class="fas fa-star active" id="star-3"></i></li>
+				</ul>
+			</div>
+
+			<label id="moves" class="moves">0 moves</label>
+
+			<button onclick="window.location.reload()"><i class="fas fa-sync"></i></button>
+			<label id="timer" class="timer">0 s</label>
 		</section>
 		<section class="game">
 		</section>

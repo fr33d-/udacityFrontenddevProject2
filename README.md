@@ -1,8 +1,13 @@
 # Udacity frontend developer project nr. 2
 
-Its a simple memory game. Works best in Google Chrome.
+Its a simple memory game. 
 
-To run a developer server please:
+The animations work best in Google Chrome.
+
+Flip the cards and hope for the best, its like every memory game you've seen. 
+A indicator tells you how many items you found, how good you are and how much time you spend with the game. If you like it, tell others about it. 
+
+You can run it from the index.html or as a developer runt the development server:
 1: run 'npm install'
 2: start the liveserver with 'gulp'
 
