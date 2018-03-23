@@ -34,8 +34,8 @@ function fillGameField() {
 	//Fill the game html with every card
 	cards.forEach(function(card, index) {
 	  generatedHTML += '<div class="field unfound" id="'+index+'">'+
-				'<div class="card card-closed"></div>'+
-				'<div class="card card-open closed"><i class="fab fa-'+card+'"></i></div>'+
+				'<div class="card card-closed closed"></div>'+
+				'<div class="card card-open"><i class="fab fa-'+card+'"></i></div>'+
 			'</div>';
 	});
 	$('.game').html(generatedHTML);
@@ -49,7 +49,8 @@ function hasWon(stars) {
 	if (restart === true) {
 		fillGameField();
 	}
-	clearTimeout(timer);
+	window.clearInterval(timer);
+	console.log(timer+' timer shoud stop');
 }
 
 
@@ -70,7 +71,7 @@ class Player {
 
 		// To the reviewer how complained about $ as undefined: $ is the jQuery selector to address DOM elements.
 		// If this is not the best way to use it please tell me exactly why and how I can make it better.
-		// Please do not just write "undefined variables"! This is not helpful in any way.
+		// Please do not just write "undefined variables"! This is not helpful for me as a beginner.
 
 
 		this.totalTurns += 2;
@@ -106,6 +107,7 @@ class Player {
 			    	secondsPlayed++;
 					$('#timer').html(secondsPlayed+' s');
 				}, 1000);
+				console.log(timer+' timer started');
 				this.firstTurnMade = true;
 			}
 
@@ -137,11 +139,11 @@ class Player {
 
 				//And check if the player has won.
 				if (this.found == 8) {
-					timer = setTimeout(function(){
+					setTimeout(function(){
 						hasWon(stars);
 					}, 1000);
 				}
-				this.movesCounter()
+				this.movesCounter();
 
 			} else {
 				//Cards don't match. Turn both cards after the first animation has finished
@@ -154,7 +156,7 @@ class Player {
 					$('#'+secondCard).find('.card-closed').toggleClass('closed');
 				}, 1000);
 
-				this.movesCounter()
+				this.movesCounter();
 			}
 
 		}
