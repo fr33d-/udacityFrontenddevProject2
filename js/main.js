@@ -9,11 +9,11 @@ var icons = [
 	'github',
 	'google'
 ];
-var cards = [];
-var secondsPlayed = 0;
-var player = null;
-var stars = null;
-var timer = null;
+var cards = [],
+	secondsPlayed = 0,
+	player = null,
+	stars = null,
+	timer = null;
 
 //Function to initial fill the game field.
 function fillGameField() {
@@ -34,23 +34,29 @@ function fillGameField() {
 	//Fill the game html with every card
 	cards.forEach(function(card, index) {
 	  generatedHTML += '<div class="field unfound" id="'+index+'">'+
-				'<div class="card card-closed closed"></div>'+
-				'<div class="card card-open"><i class="fab fa-'+card+'"></i></div>'+
+				'<div class="card card-closed"></div>'+
+				'<div class="card card-open closed"><i class="fab fa-'+card+'"></i></div>'+
 			'</div>';
 	});
-	$('.game').html(generatedHTML);
+	$('.game-field').html(generatedHTML);
 }
 
 //Function the chef if the player has won
 function hasWon(stars) {
 	//Display a modal if the player has won.
 	//Show the seconds he needed and give option to start the game again.
-	var restart = confirm('Congratulations! \n You won the game in '+secondsPlayed+' seconds with '+stars+' stars. \n New game?');
-	if (restart === true) {
-		fillGameField();
-	}
+
+	$('.game').addClass('won');
+	$('#secondsWon').html('You won the game in '+secondsPlayed+' seconds.')
+	$('.message').fadeIn();
+
+	// var restart = confirm('Congratulations! \n You won the game in '+secondsPlayed+' seconds with '+stars+' stars. \n New game?');
+	// if (restart === true) {
+	// 	fillGameField();
+	// }
+
+
 	window.clearInterval(timer);
-	console.log(timer+' timer shoud stop');
 }
 
 
@@ -76,13 +82,13 @@ class Player {
 
 		this.totalTurns += 2;
 		if (this.totalTurns > 20 && this.totalTurns <= 30 ) {
-			$('#star-3').removeClass('active');
+			$('.star-3').removeClass('active');
 			this.stars = 2;
 		} else if (this.totalTurns > 30 && this.totalTurns <= 40 ) {
-			$('#star-2').removeClass('active');
+			$('.star-2').removeClass('active');
 			this.stars = 1;
 		} else if (this.totalTurns > 40 ) {
-			$('#star-1').removeClass('active');
+			$('.star-1').removeClass('active');
 			this.stars = 0;
 		}
 
@@ -93,9 +99,10 @@ class Player {
 	//gets called every time the player clicks on a card
 	playerTurn(cardID) {
 
-		//If its the first card you just flip one card
+		//If its the first card you just flip one card.
 		if (this.turn == 1) {
 			// Just flip the first card.
+
 			$('#'+cardID).find('.card-open').toggleClass('closed');
 			$('#'+cardID).find('.card-closed').toggleClass('closed');
 			this.firstCard = cardID;
@@ -107,58 +114,62 @@ class Player {
 			    	secondsPlayed++;
 					$('#timer').html(secondsPlayed+' s');
 				}, 1000);
-				console.log(timer+' timer started');
+				// console.log(timer+' timer started');
 				this.firstTurnMade = true;
 			}
 
 		} else if (this.turn == 2) {
 			//Flip the second card and set the next turn to the first in round.
-			$('#'+cardID).find('.card-open').toggleClass('closed');
-			$('#'+cardID).find('.card-closed').toggleClass('closed');
-			this.secondCard = cardID;
-			this.turn = 1;
 
-			//Check if the two cards match
-			if (cards[this.firstCard] == cards[this.secondCard] && this.firstCard != this.secondCard) {
-				//If the cards match, count one to the found indicator.
-				var list = '';
-				this.found++;
+			//The player can not click this card twice to close it.
+			if ( cardID != this.firstCard) {
 
-				for (var i = this.found; i > 0; i-- ) {
-					list += '<li class="done"></li>';
-				}
-				for (var j = this.found; j < 8; j++ ) {
-					list += '<li class="open"></li>';
-				}
-				$('.progress-indicator ul').html(list);
+				$('#'+cardID).find('.card-open').toggleClass('closed');
+				$('#'+cardID).find('.card-closed').toggleClass('closed');
+				this.secondCard = cardID;
+				this.turn = 1;
 
-				//Set the cards to 'found'-state, so they change the color and
-				//can not be clicked again.
-				$('#'+this.firstCard).removeClass('unfound').addClass('found');
-				$('#'+this.secondCard).removeClass('unfound').addClass('found');
+				//Check if the two cards match
+				if (cards[this.firstCard] == cards[this.secondCard] && this.firstCard != this.secondCard) {
+					//If the cards match, count one to the found indicator.
+					var list = '';
+					this.found++;
 
-				//And check if the player has won.
-				if (this.found == 8) {
+					for (var i = this.found; i > 0; i-- ) {
+						list += '<li class="done"></li>';
+					}
+					for (var j = this.found; j < 8; j++ ) {
+						list += '<li class="open"></li>';
+					}
+					$('.progress-indicator ul').html(list);
+
+					//Set the cards to 'found'-state, so they change the color and
+					//can not be clicked again.
+					$('#'+this.firstCard).removeClass('unfound').addClass('found');
+					$('#'+this.secondCard).removeClass('unfound').addClass('found');
+
+					//And check if the player has won.
+					if (this.found == 8) {
+						setTimeout(function(){
+							hasWon(stars);
+						}, 1000);
+					}
+					this.movesCounter();
+
+				} else {
+					//Cards don't match. Turn both cards after the first animation has finished
+					var firstCard = this.firstCard;
+					var secondCard = this.secondCard;
 					setTimeout(function(){
-						hasWon(stars);
+						$('#'+firstCard).find('.card-open').toggleClass('closed');
+						$('#'+firstCard).find('.card-closed').toggleClass('closed');
+						$('#'+secondCard).find('.card-open').toggleClass('closed');
+						$('#'+secondCard).find('.card-closed').toggleClass('closed');
 					}, 1000);
+
+					this.movesCounter();
 				}
-				this.movesCounter();
-
-			} else {
-				//Cards don't match. Turn both cards after the first animation has finished
-				var firstCard = this.firstCard;
-				var secondCard = this.secondCard;
-				setTimeout(function(){
-					$('#'+firstCard).find('.card-open').toggleClass('closed');
-					$('#'+firstCard).find('.card-closed').toggleClass('closed');
-					$('#'+secondCard).find('.card-open').toggleClass('closed');
-					$('#'+secondCard).find('.card-closed').toggleClass('closed');
-				}, 1000);
-
-				this.movesCounter();
 			}
-
 		}
 	}
 }

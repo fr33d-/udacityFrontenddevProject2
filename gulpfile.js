@@ -43,4 +43,10 @@ gulp.task('prettier', () => {
 
 livereload({ start: true });
 
+//Todo or nice to have:
+//1. JS Hint
+//2. ES6 backward compiling, Bable
+//3. Prettier
+
+
 gulp.task('default', [ 'sass', 'sass:watch', 'watch', 'connect' ]);

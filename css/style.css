@@ -11,6 +11,8 @@
     width: 100%;
     text-align: center;
     margin-bottom: 50px; }
+  h2 {
+    text-align: center; }
   button {
     font-size: 16px;
     border: 0;
@@ -62,8 +64,8 @@
       padding: 0;
       width: 25px;
       height: 15px; }
-    .stars .active {
-      color: #fc0; }
+  .active {
+    color: #fc0; }
   .game {
     height: 405px;
     width: 405px;
@@ -71,8 +73,12 @@
     border-radius: 20px;
     margin: auto;
     padding: 20px 0 0 20px;
+    transition: all 1s ease-in-out;
     background: #3626ac;
-    background: linear-gradient(135deg, #3626ac 0%, #4071c4 67%, #3ba2e9 100%);
+    background: linear-gradient(135deg, #3626ac 0%, #4071c4 67%, #3ba2e9 100%); }
+  .game-field {
+    height: 100%;
+    width: 100%;
     display: grid;
     grid-template-rows: 90px 90px 90px 90px;
     grid-template-columns: 90px 90px 90px 90px;
@@ -112,6 +118,39 @@
   .found .card-open {
     animation: foundIt 1s ease-in-out;
     background: #2e9282; }
+  .won {
+    display: block;
+    height: 180px;
+    background: #26ac2a;
+    background: linear-gradient(135deg, #26ac2a 0%, #58c440 67%, #96e93b 100%); }
+    .won h1 {
+      color: #fc0;
+      margin-bottom: 20px; }
+    .won h2, .won p {
+      color: #193a67;
+      text-align: center; }
+    .won i {
+      font-size: 30px;
+      margin: 5px; }
+    .won button {
+      clear: both;
+      width: 120px;
+      height: 40px;
+      border-radius: 8px;
+      background-color: #3ba2e9;
+      color: #000;
+      margin: 20px 215px 0 0; }
+    .won .stars {
+      margin: 0 0 20px 0;
+      padding: 0;
+      width: 100%;
+      text-align: center; }
+    .won .card, .won .game-field {
+      display: none; }
+    .won .message {
+      margin: 20px auto;
+      height: 90px, 5;
+      width: 270px; }
   .progress-indicator {
     display: none; }
   .stars {
@@ -120,7 +159,21 @@
     margin: 30px;
     font-size: 30px; }
   .game {
-    padding: 10px 0 0 10px; } }
+    padding: 10px 0 0 10px; }
+  .won {
+    height: 300px; }
+    .won h1 {
+      font-size: 20px;
+      margin-bottom: 10px; }
+    .won h2 {
+      font-size: 16px; }
+    .won i {
+      font-size: 25px;
+      margin: 5px; }
+    .won button {
+      margin: 20px 75px 0 0; }
+    .won .stars {
+      margin: 0 0 20px 0; } }
 
 @media screen and (max-width: 375px) {
   * {
@@ -135,6 +188,8 @@
     width: 100%;
     text-align: center;
     margin-bottom: 50px; }
+  h2 {
+    text-align: center; }
   button {
     font-size: 16px;
     border: 0;
@@ -186,8 +241,8 @@
       padding: 0;
       width: 25px;
       height: 15px; }
-    .stars .active {
-      color: #fc0; }
+  .active {
+    color: #fc0; }
   .game {
     height: 225px;
     width: 225px;
@@ -195,8 +250,12 @@
     border-radius: 20px;
     margin: auto;
     padding: 20px 0 0 20px;
+    transition: all 1s ease-in-out;
     background: #3626ac;
-    background: linear-gradient(135deg, #3626ac 0%, #4071c4 67%, #3ba2e9 100%);
+    background: linear-gradient(135deg, #3626ac 0%, #4071c4 67%, #3ba2e9 100%); }
+  .game-field {
+    height: 100%;
+    width: 100%;
     display: grid;
     grid-template-rows: 50px 50px 50px 50px;
     grid-template-columns: 50px 50px 50px 50px;
@@ -236,6 +295,39 @@
   .found .card-open {
     animation: foundIt 1s ease-in-out;
     background: #2e9282; }
+  .won {
+    display: block;
+    height: 100px;
+    background: #26ac2a;
+    background: linear-gradient(135deg, #26ac2a 0%, #58c440 67%, #96e93b 100%); }
+    .won h1 {
+      color: #fc0;
+      margin-bottom: 20px; }
+    .won h2, .won p {
+      color: #193a67;
+      text-align: center; }
+    .won i {
+      font-size: 30px;
+      margin: 5px; }
+    .won button {
+      clear: both;
+      width: 120px;
+      height: 40px;
+      border-radius: 8px;
+      background-color: #3ba2e9;
+      color: #000;
+      margin: 20px 215px 0 0; }
+    .won .stars {
+      margin: 0 0 20px 0;
+      padding: 0;
+      width: 100%;
+      text-align: center; }
+    .won .card, .won .game-field {
+      display: none; }
+    .won .message {
+      margin: 20px auto;
+      height: 50px, 5;
+      width: 150px; }
   .progress-indicator {
     display: none; }
   .stars {
@@ -247,7 +339,21 @@
   .game {
     padding: 8px 0 0 8px; }
   .timer {
-    margin: 5px 10px 0 2px; } }
+    margin: 5px 10px 0 2px; }
+  .won {
+    height: 280px; }
+    .won h1 {
+      font-size: 20px;
+      margin-bottom: 10px; }
+    .won h2 {
+      font-size: 16px; }
+    .won i {
+      font-size: 25px;
+      margin: 5px; }
+    .won button {
+      margin: 20px 15px 0 0; }
+    .won .stars {
+      margin: 0 20px 10px 0; } }
 
 @media screen and (min-width: 841px) {
   * {
@@ -262,6 +368,8 @@
     width: 100%;
     text-align: center;
     margin-bottom: 50px; }
+  h2 {
+    text-align: center; }
   button {
     font-size: 16px;
     border: 0;
@@ -313,8 +421,8 @@
       padding: 0;
       width: 25px;
       height: 15px; }
-    .stars .active {
-      color: #fc0; }
+  .active {
+    color: #fc0; }
   .game {
     height: 810px;
     width: 810px;
@@ -322,8 +430,12 @@
     border-radius: 20px;
     margin: auto;
     padding: 20px 0 0 20px;
+    transition: all 1s ease-in-out;
     background: #3626ac;
-    background: linear-gradient(135deg, #3626ac 0%, #4071c4 67%, #3ba2e9 100%);
+    background: linear-gradient(135deg, #3626ac 0%, #4071c4 67%, #3ba2e9 100%); }
+  .game-field {
+    height: 100%;
+    width: 100%;
     display: grid;
     grid-template-rows: 180px 180px 180px 180px;
     grid-template-columns: 180px 180px 180px 180px;
@@ -362,4 +474,37 @@
       background: #2e9282; } }
   .found .card-open {
     animation: foundIt 1s ease-in-out;
-    background: #2e9282; } }
+    background: #2e9282; }
+  .won {
+    display: block;
+    height: 360px;
+    background: #26ac2a;
+    background: linear-gradient(135deg, #26ac2a 0%, #58c440 67%, #96e93b 100%); }
+    .won h1 {
+      color: #fc0;
+      margin-bottom: 20px; }
+    .won h2, .won p {
+      color: #193a67;
+      text-align: center; }
+    .won i {
+      font-size: 30px;
+      margin: 5px; }
+    .won button {
+      clear: both;
+      width: 120px;
+      height: 40px;
+      border-radius: 8px;
+      background-color: #3ba2e9;
+      color: #000;
+      margin: 20px 215px 0 0; }
+    .won .stars {
+      margin: 0 0 20px 0;
+      padding: 0;
+      width: 100%;
+      text-align: center; }
+    .won .card, .won .game-field {
+      display: none; }
+    .won .message {
+      margin: 20px auto;
+      height: 180px, 5;
+      width: 540px; } }

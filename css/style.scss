@@ -17,6 +17,11 @@
 		margin-bottom: 50px;
 	}
 
+	h2 {
+		text-align: center;
+
+	}
+
 	button {
 		font-size: 16px;
 		border: 0;
@@ -92,11 +97,11 @@
 			width: 25px;
 			height: 15px;
 		}
+	}
 
-		.active {
+	.active {
 			color: #fc0;
 		}
-	}
 
 	.game {
 		height: $cardSize*4.5;
@@ -106,8 +111,15 @@
 		margin: auto;
 		padding: 20px 0 0 20px;
 
+		transition: all 1s ease-in-out;
+
 		background: rgb(54,38,172);
 	    background: linear-gradient(135deg, rgba(54,38,172,1) 0%, rgba(64,113,196,1) 67%, rgba(59,162,233,1) 100%);
+	}
+
+	.game-field {
+		height: 100%;
+		width: 100%;
 
 		display: grid;
 		grid-template-rows: $cardSize $cardSize $cardSize $cardSize;
@@ -167,6 +179,56 @@
 			background: #2e9282;
 		}
 	}
+
+	.won {
+		display: block;
+		height: $cardSize*2;
+		background: #26ac2a;
+	    background: linear-gradient(135deg, #26ac2a 0%, #58c440 67%, #96e93b 100%);
+
+		h1 {
+			color: #fc0;
+			margin-bottom: 20px;
+		}
+
+		h2, p {
+			color: #193a67;
+			text-align: center;
+		}
+
+		i {
+			font-size: 30px;
+			margin: 5px;
+		}
+
+		button {
+			clear: both;
+			width: 120px;
+			height: 40px;
+			border-radius: 8px;
+			background-color: rgba(59,162,233,1);
+			color: #000;
+			margin: 20px 215px 0 0 ;
+		}
+
+		.stars {
+			margin: 0 0 20px 0;
+			padding: 0;
+			width: 100%;
+			text-align: center;
+		}
+
+		.card, .game-field {
+			display: none;
+		}
+
+		//Todo: auf carsize umstellen
+		.message {
+			margin: 20px auto;
+			height: $cardSize*1,5;
+			width: $cardSize*3;
+		}
+	}
 }
 
 @media screen and (max-width: 840px) {
@@ -187,6 +249,32 @@
 
 	.game {
 		padding: 10px 0 0 10px;
+	}
+
+	.won {
+		height: 300px;
+
+		h1 {
+			font-size: 20px;
+			margin-bottom: 10px;
+		}
+
+		h2 {
+			font-size: 16px;
+		}
+
+		i {
+			font-size: 25px;
+			margin: 5px;
+		}
+
+		button {
+			margin: 20px 75px 0 0 ;
+		}
+
+		.stars {
+			margin: 0 0 20px 0;
+		}
 	}
 }
 
@@ -213,6 +301,32 @@
 
 	.timer {
 		margin: 5px 10px 0 2px;
+	}
+
+	.won {
+		height: 280px;
+
+		h1 {
+			font-size: 20px;
+			margin-bottom: 10px;
+		}
+
+		h2 {
+			font-size: 16px;
+		}
+
+		i {
+			font-size: 25px;
+			margin: 5px;
+		}
+
+		button {
+			margin: 20px 15px 0 0 ;
+		}
+
+		.stars {
+			margin: 0 20px 10px 0;
+		}
 	}
 }
 

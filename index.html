@@ -31,9 +31,9 @@
 
 			<div class="stars">
 				<ul>
-					<li><i class="fas fa-star active" id="star-1"></i></li>
-					<li><i class="fas fa-star active" id="star-2"></i></li>
-					<li><i class="fas fa-star active" id="star-3"></i></li>
+					<li><i class="fas fa-star active star-1"></i></li>
+					<li><i class="fas fa-star active star-2"></i></li>
+					<li><i class="fas fa-star active star-3"></i></li>
 				</ul>
 			</div>
 
@@ -43,6 +43,14 @@
 			<label id="timer" class="timer">0 s</label>
 		</section>
 		<section class="game">
+			<div class="game-field"></div>
+			<div class="message" style="display: none;">
+				<h1>You WON!</h1>
+				<div class="stars"><i class="fas fa-star active star-1"></i><i class="fas fa-star active star-2"></i><i class="fas fa-star active star-3"></i></div>
+				<h2>Congratulations!</h2>
+				<p id="secondsWon">You won the game in secondsPlayed seconds.</p>
+				<button onclick="window.location.reload()">New game?</button>
+			</div>
 		</section>
 	</section>
 
