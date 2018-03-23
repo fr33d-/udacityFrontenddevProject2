@@ -56,7 +56,8 @@
     .stars ul {
       list-style: none;
       display: inline-block;
-      padding: 0; }
+      padding: 0;
+      width: 90px; }
     .stars li {
       padding: 0;
       width: 25px;
@@ -121,6 +122,133 @@
   .game {
     padding: 10px 0 0 10px; } }
 
+@media screen and (max-width: 375px) {
+  * {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #444a52; }
+  footer {
+    text-align: center;
+    width: 100%;
+    margin-top: 80px; }
+  h1 {
+    font-size: 2.5em;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 50px; }
+  button {
+    font-size: 16px;
+    border: 0;
+    float: right;
+    margin-top: 10px; }
+    button:hover {
+      color: #406bc2; }
+  .timer {
+    float: right;
+    margin: 10px 20px 0 0; }
+  .progress {
+    clear: both;
+    width: 225px;
+    height: 25px;
+    margin: 10px auto;
+    padding-bottom: 10px; }
+    .progress ul {
+      list-style: none;
+      padding: 0 10px 0 0;
+      margin: 0;
+      width: 100px;
+      display: inline-block; }
+    .progress li {
+      height: 5px;
+      width: 10px;
+      float: left;
+      margin: 2px; }
+    .progress .open {
+      background-color: #efefef; }
+    .progress .done {
+      background-color: #a7a7a7; }
+    .progress p {
+      display: inline-block;
+      margin: 5px 0; }
+  .progress-indicator {
+    display: inline; }
+  .stars {
+    width: 110px;
+    height: 25px;
+    font-size: 20px;
+    display: inline-block;
+    margin-left: 40px; }
+    .stars ul {
+      list-style: none;
+      display: inline-block;
+      padding: 0;
+      width: 90px; }
+    .stars li {
+      padding: 0;
+      width: 25px;
+      height: 15px; }
+    .stars .active {
+      color: #fc0; }
+  .game {
+    height: 225px;
+    width: 225px;
+    border-radius: 3.125px;
+    border-radius: 20px;
+    margin: auto;
+    padding: 20px 0 0 20px;
+    background: #3626ac;
+    background: linear-gradient(135deg, #3626ac 0%, #4071c4 67%, #3ba2e9 100%);
+    display: grid;
+    grid-template-rows: 50px 50px 50px 50px;
+    grid-template-columns: 50px 50px 50px 50px;
+    grid-auto-flow: column;
+    grid-gap: 6.25px; }
+  .field {
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 800px; }
+  .card {
+    border-radius: 15px;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    animation: all 3s ease-in-out;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transition: transform 1s; }
+    .card i {
+      margin: 65px;
+      font-size: 50px;
+      color: #fff; }
+    .card-closed {
+      background: #b0c0cb; }
+    .card-open {
+      background: #2b7fb5; }
+  .closed {
+    transform: rotateY(180deg); }
+  @keyframes foundIt {
+    from {
+      background: #2b7fb5; }
+    to {
+      background: #2e9282; } }
+  .found .card-open {
+    animation: foundIt 1s ease-in-out;
+    background: #2e9282; }
+  .progress-indicator {
+    display: none; }
+  .stars {
+    margin-left: 0;
+    width: 90px; }
+  .card i {
+    margin: 23px;
+    font-size: 30px; }
+  .game {
+    padding: 8px 0 0 8px; }
+  .timer {
+    margin: 5px 10px 0 2px; } }
+
 @media screen and (min-width: 841px) {
   * {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -179,7 +307,8 @@
     .stars ul {
       list-style: none;
       display: inline-block;
-      padding: 0; }
+      padding: 0;
+      width: 90px; }
     .stars li {
       padding: 0;
       width: 25px;

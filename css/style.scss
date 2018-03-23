@@ -84,6 +84,7 @@
 			list-style: none;
 			display: inline-block;
 			padding: 0;
+			width: 90px;
 		}
 
 		li {
@@ -186,6 +187,32 @@
 
 	.game {
 		padding: 10px 0 0 10px;
+	}
+}
+
+@media screen and (max-width: 375px) {
+    @include styling($cardSize: 50px);
+
+    .progress-indicator {
+    	display: none;
+    }
+
+    .stars {
+		margin-left: 0;
+		width: 90px;
+	}
+
+	.card i {
+		margin: 23px;
+		font-size: 30px;
+	}
+
+	.game {
+		padding: 8px 0 0 8px;
+	}
+
+	.timer {
+		margin: 5px 10px 0 2px;
 	}
 }
 
